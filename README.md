@@ -228,7 +228,7 @@ conventions, bimanual annotations, and storage options.
 
 ## Documentation
 
-| I want to… | Start here |
+|  |  |
 |---|---|
 | Set up checkpoints or CUDA extensions | [Installation](docs/usage.md#installation) |
 | Annotate another dataset | [Supported datasets](docs/usage.md#supported-datasets) |
