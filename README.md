@@ -6,7 +6,9 @@
 
 **CoRL 2026**
 
-[Paper](https://arxiv.org/abs/2606.13497) · [Project website](https://intuitive-robots.github.io/sparc-labeling/) · [BibTeX](#citation)
+[![Paper on arXiv](https://img.shields.io/badge/%F0%9F%93%84%20arXiv-2606.13497-B31B1B?style=flat-square)](https://arxiv.org/abs/2606.13497)
+[![Project website](https://img.shields.io/badge/%F0%9F%8C%90%20Project-Website-2563EB?style=flat-square)](https://intuitive-robots.github.io/sparc-labeling/)
+[![BibTeX citation](https://img.shields.io/badge/%F0%9F%93%9A%20Cite-BibTeX-475569?style=flat-square)](#citation)
 
 [Quickstart](#quickstart) | [Workflow](#workflow) | [Outputs](#outputs) | [Documentation](#documentation) | [Citation](#citation)
 
