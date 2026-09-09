@@ -1,6 +1,6 @@
 <div align="center">
 
-# SPARC
+# ✨ SPARC
 
 ### Reliable Spatial Annotations from Robot Demonstrations at Scale
 
