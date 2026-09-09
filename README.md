@@ -45,7 +45,7 @@ managed cluster, use a compute allocation.
 ```bash
 conda create -n sparc -c conda-forge python=3.12 pip ffmpeg
 conda activate sparc
-python -m pip install --no-deps -r requirements-lock.txt
+python -m pip install --no-deps -r requirements.txt
 
 # SAM2 checkpoint
 bash sparc/detectors/sam2/checkpoints/download_ckpts.sh
@@ -56,7 +56,8 @@ python setup/prepare_robotseg.py --checkpoint /path/to/robotseg.pt
 
 Get `robotseg.pt` from the [RobotSeg checkpoint links](https://github.com/showlab/RobotSeg#72-download).
 LLMDet, AllTracker, and MoGe download weights on first use.
-The lock’s `--no-deps` flag is intentional; see
+`requirements.txt` contains the complete pinned annotation environment.
+The `--no-deps` flag is intentional; see
 [installation notes and CUDA extension builds](docs/usage.md#installation)
 for dependency constraints, offline preparation, and validation scope.
 

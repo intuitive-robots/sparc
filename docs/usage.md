@@ -33,18 +33,24 @@ package lock:
 ```bash
 conda create -n robog-release -c conda-forge python=3.12 pip ffmpeg
 conda activate robog-release
-python -m pip install --no-deps -r requirements-lock.txt
+python -m pip install --no-deps -r requirements.txt
 python annotate.py --help
 ```
 
-`requirements-lock.txt` pins the annotation/model dependency closure, including
+`requirements.txt` pins the annotation/model dependency closure, including
 transitive dependencies and Git revisions. `--no-deps` is intentional: it
 reproduces the tested runtime despite OpenCV 4.12's declared NumPy `<2.3`
 constraint against NumPy 2.4.4 and langchain-core's packaging `<26` constraint
 against packaging 26.2. A blanket `pip check` reports these known metadata
-conflicts; on ARM, uv also flags NVIDIA's upstream SBSA wheel tag. The direct version snapshots remain in
-`requirements.txt` and `requirements-models.txt`. Do not install vLLM in this
-environment; its Torch requirements differ.
+conflicts; on ARM, uv also flags NVIDIA's upstream SBSA wheel tag.
+
+| File | Purpose |
+|---|---|
+| `requirements.txt` | Complete pinned annotation environment, including model dependencies |
+| `requirements-vllm.txt` | Optional VLM server, installed in a separate environment |
+| `requirements-dev.txt` | Test runner, added to the annotation environment |
+
+Do not install vLLM in the annotation environment; its Torch requirements differ.
 
 The existing `robog-dataset-pipeline-tf4571` environment remains the development
 and test baseline (Python 3.12.13, Torch 2.10.0+cu130, torchvision 0.25.0+cu130,

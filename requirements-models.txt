@@ -1,4 +1,0 @@
-# Optional model packages from the same tf4571 runtime.
-# RobotSeg remains the existing vendors/robotseg checkout plus its checkpoint.
-# No alternate versions are selected by the cleanup.
-moge @ git+https://github.com/microsoft/MoGe.git@07444410f1e33f402353b99d6ccd26bd31e469e8
