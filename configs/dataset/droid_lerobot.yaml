@@ -1,0 +1,31 @@
+# @package _global_
+# DROID LeRobot — left external camera (default)
+
+dataset:
+  name: "droid_lerobot"
+  type: "droid_lerobot"
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 15.0
+  fov_x: 100.6       # ZED2 external camera horizontal FoV
+  image_width: 1280  # ZED2 external camera resolution
+  image_height: 720
+  task_obj_dict_path: "${dataset.root}/droid_task_obj.pkl"
+  loader_kwargs:
+    view_key: "observation.images.left_external"
+
+extract_task_objects:
+  n_workers: 1024
+  compute_gripper_stats: true
+  gripper_stats_samples: 200
+
+annotator:
+  gpu_ids: [0, 1, 2, 3]
+  n_processes_per_gpu: 6
+  # DROID was already cropped implicitly by the annotator. Keep that behavior
+  # explicit in the resolved config and debug/output provenance.
+  enable_crop: true
+
+debug:
+  debug_image_dir: null
+  n_trajectories: 500   # override with debug.n_trajectories=null for the full dataset
+  debug_image_freq: 1

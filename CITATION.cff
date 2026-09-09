@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use SPARC, please cite the paper below."
+title: "SPARC"
+type: software
+url: "https://intuitive-robots.github.io/sparc-labeling/"
+authors: &authors
+  - family-names: Blank
+    given-names: Nils
+  - family-names: Mattes
+    given-names: Paul
+  - family-names: Li
+    given-names: Maximilian Xiling
+  - family-names: Suliga
+    given-names: Jakub
+  - family-names: Roth
+    given-names: Thomas
+  - family-names: Reuss
+    given-names: Moritz
+  - family-names: Vanjani
+    given-names: Pankhuri
+  - family-names: Lioutikov
+    given-names: Rudolf
+preferred-citation:
+  type: article
+  title: "SPARC: Reliable Spatial Annotations from Robot Demonstrations at Scale"
+  authors: *authors
+  year: 2026
+  journal: arXiv
+  url: "https://arxiv.org/abs/2606.13497"

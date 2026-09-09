@@ -1,0 +1,11 @@
+# @package _global_
+# Debug: enabled with moderate frequency
+
+debug:
+  save_debug_images: true
+  debug_image_freq: 5
+  debug_image_dir: null        # null = {dataset_root}/debug_annotations
+  debug_image_format: "png"
+  debug_max_per_traj: null
+  n_trajectories: 50         # null = use all; set to int to subsample (seeded)
+  gt_annotations_dir: null   # if set, restrict to GT trajectories from {dir}/{dataset.name}_gt_annotations.jsonl

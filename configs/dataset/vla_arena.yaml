@@ -1,0 +1,38 @@
+# @package _global_
+# VLA-Arena L1_L (openpi/LeRobot v2.1 format, simulated Panda) Dataset Configuration
+
+dataset:
+  name: "vla_arena"
+  type: "vla_arena"  # Dataset loader type
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 10.0
+  image_width: 256
+  image_height: 256
+
+  task_obj_dict_path: "${dataset.root}/vla_arena_task_obj.pkl"
+
+  annotations_file: "${dataset.root}/vla_arena_boxes.jsonl"
+  scene_descriptions_file: "${dataset.root}/vla_arena_scene_descriptions.jsonl"
+  reasoning_traces_dir: null
+
+extract_task_objects:
+  n_workers: 16
+  compute_gripper_stats: true
+  gripper_stats_samples: 200
+
+create_scene_descriptions:
+  n_workers: 8
+
+annotator:
+  gpu_ids: [0]
+  n_processes_per_gpu: 4
+  save_ego_format: true
+
+debug:
+  debug_image_dir: null
+  n_trajectories: 200
+  debug_image_freq: 1
+
+create_reasoning_traces:
+  stages: ["stage_1"]
+  model_name: "qwen3-vl-30b"

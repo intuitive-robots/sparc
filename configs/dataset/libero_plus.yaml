@@ -1,0 +1,38 @@
+# @package _global_
+# LIBERO-plus LeRobot v3 dataset used by starVLA's libero_plus mixture.
+
+dataset:
+  name: "libero_plus"
+  type: "multi_lerobot"
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 20.0
+  image_width: 256
+  image_height: 256
+  task_obj_dict_path: "${dataset.root}/libero_plus_task_obj.pkl"
+  loader_kwargs:
+    config_path: null
+    starvla_trajectory_names: true
+    subdatasets:
+      libero_plus:
+        view_key: observation.images.front
+        camera_priority:
+          - observation.images.front
+          - observation.images.wrist
+        gripper:
+          source: action
+          index: -1
+          transform: neg1open_pos1close_to_01
+
+extract_task_objects:
+  mode: auto
+  semantic:
+    view_keys:
+      - observation.images.front
+      - observation.images.wrist
+
+annotator:
+  gpu_ids: [0]
+  n_processes_per_gpu: 6
+
+debug:
+  n_trajectories: 100

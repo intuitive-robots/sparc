@@ -1,0 +1,3 @@
+# Serving package installed in the existing tf4571 environment.
+# Keep serving setup separate from the annotation dependency list.
+vllm==0.11.0

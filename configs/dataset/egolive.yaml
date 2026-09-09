@@ -1,0 +1,34 @@
+# @package _global_
+# EgoLive — egocentric human-hand demonstrations (LeRobot v3)
+#
+# Trajectories are official instruction segments, not whole episodes. Source
+# video is 2160x2160 @ 60 fps; the loader decimates to dataset.fps and rescales
+# to max_image_size, so the intrinsics below are already scaled to 512.
+
+dataset:
+  name: "egolive"
+  type: "egolive_multi"
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 10.0
+  camera_fx: 118.7
+  camera_fy: 118.6
+  camera_cx: 256.2
+  camera_cy: 256.2
+  image_width: 512
+  image_height: 512
+  task_obj_dict_path: "${dataset.root}/egolive_task_obj.pkl"
+  loader_kwargs:
+    target_fps: 10.0
+    max_image_size: 512
+    min_segment_seconds: 2.0
+    max_segment_seconds: 8.0
+    # Human hands have no gripper; this is the aperture-based stand-in.
+    grasp_signal: "opposition"
+    subdatasets: null
+
+annotator:
+  gpu_ids: [0]
+  n_processes_per_gpu: 4
+
+debug:
+  n_trajectories: 50

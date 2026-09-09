@@ -1,0 +1,69 @@
+# Media
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.webp
+
+
+/checkpoints/
+/vendors/
+
+# Model weights
+weights/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Caches
+.dataset_cache/
+
+# Annotation debug output
+annotation_debug/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Paper (private)
+paper/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local runs and tool caches
+.claude/
+.pytest_cache/
+.ruff_cache/
+/data/
+outputs/
+/debug/
+droid_right_release_audit*/
+paper_*/
+robog_current_conda_explicit_*.txt
+robog_current_freeze_*.txt

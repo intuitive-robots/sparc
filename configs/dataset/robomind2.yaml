@@ -1,0 +1,16 @@
+# @package _global_
+# robomind2 (LeRobot format)
+
+dataset:
+  name: "robomind2"
+  type: "robomind2"
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 30.0
+  task_obj_dict_path: "${dataset.root}/robomind2_task_obj.pkl"
+
+annotator:
+  gpu_ids: [0]
+  n_processes_per_gpu: 4
+
+debug:
+  n_trajectories: 200   # remove to annotate the whole dataset

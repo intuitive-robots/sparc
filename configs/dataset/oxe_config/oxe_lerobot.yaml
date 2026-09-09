@@ -1,0 +1,128 @@
+# Per-subdataset settings for the OXE LeRobot dataset root.
+#
+# Gripper signals emitted by the loader are normalized to the pipeline convention:
+# 0 = closed, 1 = open.
+# Local verification:
+# - Binary LeRobot OXE action[-1] values correlate with larger finger-distance
+#   observation.state[-1] when action[-1] == 1 for hydra/mutex and align with
+#   open-start pick episodes in jaco.
+# - UCSD TFDS documents action[-1] as open/close torque, while observation.state[-1]
+#   is finger distance, so state is the safer gripper signal.
+# - RoboCook action[-1] is a small continuous tool/action value; observation.state[-1]
+#   is the usable width-like signal.
+# - Fractal observation.state[-1] is inverted relative to the pipeline
+#   convention: raw high values mean closed, so the loader applies transform: invert.
+# - BC-Z observation.state[-1] is inverted relative to the pipeline convention;
+#   visual inspection shows raw high values correspond to closed, so the loader
+#   applies transform: invert.
+#
+# sample_ratio is only used when debug.sampling_strategy: weighted.
+# The default debug sampling strategy is proportional to discovered subdataset
+# size, with debug.min_per_subdataset guaranteeing small coverage floors.
+
+subdatasets:
+  fractal:
+    enabled: true
+    sample_ratio: 3.0
+    view_key: observation.images.image
+    camera_priority:
+      - observation.images.image
+    gripper:
+      source: observation.state
+      index: -1
+      transform: invert
+
+  bc_z_lerobot:
+    enabled: true
+    sample_ratio: 3.0
+    view_key: observation.images.image
+    camera_priority:
+      - observation.images.image
+    gripper:
+      source: observation.state
+      index: -1
+      transform: invert
+
+  jaco_play:
+    enabled: true
+    sample_ratio: 1.0
+    view_key: observation.images.image
+    camera_priority:
+      - observation.images.image
+      - observation.images.image_wrist
+    gripper:
+      source: action
+      index: -1
+      transform: identity
+
+  stanford_hydra_dataset:
+    enabled: true
+    sample_ratio: 1.0
+    view_key: observation.images.image
+    camera_priority:
+      - observation.images.image
+      - observation.images.wrist_image
+    gripper:
+      source: action
+      index: -1
+      transform: identity
+
+  stanford_robocook:
+    enabled: true
+    sample_ratio: 1.0
+    view_key: observation.images.image_1
+    camera_priority:
+      - observation.images.image_1
+      - observation.images.image_2
+      - observation.images.image_3
+      - observation.images.image_4
+    gripper:
+      source: observation.state
+      index: -1
+      transform: identity
+
+  taco_play:
+    enabled: true
+    sample_ratio: 1.0
+    view_key: observation.images.rgb_static
+    camera_priority:
+      - observation.images.rgb_static
+      - observation.images.rgb_gripper
+    gripper:
+      source: action
+      index: -1
+      transform: identity
+
+  toto:
+    enabled: true
+    sample_ratio: 1.0
+    view_key: observation.images.image
+    camera_priority:
+      - observation.images.image
+    gripper:
+      source: observation.state
+      index: -1
+      transform: identity
+
+  ucsd_pick_and_place_dataset:
+    enabled: true
+    sample_ratio: 1.0
+    view_key: observation.images.image
+    camera_priority:
+      - observation.images.image
+    gripper:
+      source: observation.state
+      index: -1
+      transform: identity
+
+  utaustin_mutex:
+    enabled: true
+    sample_ratio: 1.0
+    view_key: observation.images.image
+    camera_priority:
+      - observation.images.image
+      - observation.images.wrist_image
+    gripper:
+      source: action
+      index: -1
+      transform: identity

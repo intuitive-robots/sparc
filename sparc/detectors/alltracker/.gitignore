@@ -1,0 +1,11 @@
+*~
+*#*
+*pyc
+#.*
+.DS_Store
+*.out
+*.gif
+stock_videos/
+logs*
+*.mp4
+temp_*

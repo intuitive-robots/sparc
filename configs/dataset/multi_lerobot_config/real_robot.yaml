@@ -1,0 +1,33 @@
+subdatasets:
+  cylinder_cube_full:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  folding_20hz_abs_cartesian_trimmed:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  pick_up_banana_xinkai_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert

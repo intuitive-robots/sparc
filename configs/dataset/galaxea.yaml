@@ -1,0 +1,24 @@
+# @package _global_
+# Galaxea Open World (mobile-manipulation, LeRobot v3)
+
+dataset:
+  name: "galaxea"
+  type: "galaxea"
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 15.0
+  image_width: 1280
+  image_height: 720
+  task_obj_dict_path: "${dataset.root}/galaxea_task_obj.pkl"
+  loader_kwargs:
+    n_workers: 16
+
+annotator:
+  gpu_ids: [0]
+  n_processes_per_gpu: 4
+  # The released Galaxea GT boxes are drawn on each clip's first frame. Using
+  # that same frame avoids evaluating a later, camera-shifted detection box.
+  detection_frame_policy: "subtask_start"
+
+debug:
+  n_trajectories: 200
+  debug_image_freq: 1

@@ -1,0 +1,286 @@
+subdatasets:
+  Put_the_orange_carrot_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_orange_carrot_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_orange_lego_block_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_orange_lego_block_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_yellow_cube_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_yellow_cube_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_yellow_cuboid_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_yellow_cuboid_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_yellow_lego_block_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  Put_the_yellow_lego_block_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  3_obs_Put_the_yellow_cube_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  3_obs_Put_the_yellow_cube_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  3_obs_Put_the_yellow_cuboid_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  3_obs_Put_the_yellow_cuboid_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  3_obs_Put_the_yellow_lego_block_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  3_obs_Put_the_yellow_lego_block_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_orange_carrot_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_orange_carrot_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_orange_lego_block_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_orange_lego_block_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_yellow_cube_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_yellow_cube_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_yellow_cuboid_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_yellow_cuboid_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_yellow_lego_block_into_the_red_bowl_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert
+
+  all_obs_Put_the_yellow_lego_block_into_the_red_dustpan_abs_cartesian_action:
+    enabled: true
+    view_key: observation.images.static_cam
+    camera_priority:
+      - observation.images.static_cam
+      - observation.images.wrist_cam
+    gripper:
+      source: action
+      index: -1
+      transform: invert

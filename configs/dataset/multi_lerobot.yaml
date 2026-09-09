@@ -1,0 +1,21 @@
+# @package _global_
+# multi_lerobot (LeRobot format)
+
+dataset:
+  name: "multi_lerobot"
+  type: "multi_lerobot"
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 20.0
+  image_width: null
+  image_height: null
+  task_obj_dict_path: "${dataset.root}/multi_lerobot_task_obj.pkl"
+  loader_kwargs:
+    config_path: "configs/dataset/multi_lerobot_config/real_robot.yaml"
+    subdatasets: null
+
+annotator:
+  gpu_ids: [0]
+  n_processes_per_gpu: 4
+
+debug:
+  n_trajectories: 100   # remove to annotate the whole dataset

@@ -1,0 +1,93 @@
+# Annotation Pipeline Configuration
+#
+# Base defaults for `python annotate.py`. Per-dataset configs in
+# configs/dataset/*.yaml set dataset.{name,type,root,fps,...} and may override
+# any annotator.* field. CLI dot-list overrides take final precedence, e.g.
+#   python annotate.py --dataset agibot_world dataset.root=/path/to/dataset annotator.gpu_ids=[0]
+
+defaults:
+  - _self_                          # Base values (overridden by the dataset config below)
+  - debug: "on"                     # Debug preset: off | on | verbose
+  - dataset: agibot_world           # Default dataset (configs/dataset/*.yaml)
+  - vllm: qwen3_vl_30b              # VLM preset for task parsing
+
+# VLLM inference endpoint (model-specific values merged from configs/vllm/*.yaml)
+vllm:
+  base_url: "http://localhost:8000/v1"
+
+# Stage 1 (optional, run via extract_task_objects.py): pre-compute the
+# task-object dictionary with the VLM. The annotator also resolves tasks live
+# and caches them, so this stage is only an optimization.
+extract_task_objects:
+  mode: "text"                    # text = instruction parsing; semantic = multiview; auto = multiview only for >1 completed grasp cycle
+  n_workers: 16
+  max_trajectories: null            # null = process all
+  shuffle_seed: null                # null = fresh random order; integer = reproducible subset
+  compute_gripper_stats: false
+  gripper_stats_samples: 200
+  vlm_concurrency: 1500
+  temperature: null                 # null = use vllm.temperature
+  semantic:
+    temperature: 0.2
+    view_keys: null                  # rows in one image: selected external view, then first available wrist view
+    max_views: 2
+    cell_width: 320
+    cell_height: 200
+    jpeg_quality: 85
+    max_cpu_workers: 32              # video decoding is substantially heavier than text parsing
+    max_vlm_concurrency: 512
+    max_pending_requests: 1024        # bounds queued JPEG storyboards and host-memory use
+
+# Annotator: vision-based object detection, tracking, and box selection.
+annotator:
+  gpu_ids: [0, 1, 2, 3]             # Local GPU IDs to use
+  n_processes_per_gpu: 6            # CPU worker processes per GPU
+
+  # Detection
+  detection_model: llmdet
+  detection_frame_policy: "pregrasp_midpoint"  # pregrasp_midpoint | subtask_start
+  det_threshold: 0.05               # Detection confidence threshold
+  nms_threshold: 0.6                # IoU threshold for NMS (lower = more suppression)
+  detectors:
+    llmdet:
+      model_id: "iSEE-Laboratory/llmdet_base"
+      box_threshold: 0.35
+      text_threshold: 0.25
+      use_slicing: false
+
+  # Tracking
+  tracking_model: "alltracker"
+  n_tracker_instances: 1          # Parallel tracker instances per GPU
+  tracking_target_fps: 6.0          # Subsample tracking frames to this fps (null = ~24fps)
+  tracking_max_frames: 800          # Hard cap on tracking frames per subtask (null = 800)
+  tracking_max_resolution: null     # Resize cap for tracking frames only (null = none)
+
+  # Box selection / scoring
+  filter_robot: false               # Filter detections on the robot itself
+  scoring_mode: "full"              # full | simple
+  enable_crop: false                # Crop preprocessing around detections
+  cross_model_verification:
+    mode: "off"                     # off | highlighted_box | spatial_consistency | dual
+    weight: 0.40                    # Influence on annotation_confidence (0-1)
+    hard_gate: false                # If true, confidence=0 when the VLM rejects
+
+  # 3D / segmentation aids
+  enable_pointcloud: true           # MoGe depth lifting (3D sphere scoring signal)
+  pointcloud_batch_size: 64
+  pointcloud_max_resolution: null
+  pointcloud_resolution_level: 2    # MoGe resolution level 0-9 (lower = faster, bigger batches)
+  enable_robotseg: true             # RobotSeg full-video gripper segmentation
+  robotseg_max_frames: 64           # Max frames into RobotSeg (subsampled); null = no limit
+
+  # Global resolution cap (applied before detection, SAM2, tracking, MoGe)
+  max_resolution: null              # null = no resize; boxes/traces are unscaled in output
+
+  # Output
+  output_file: null                 # null = {dataset.root}/{dataset.name}_boxes.jsonl
+  save_pointclouds: false           # Export 3D keyframe clouds and diagnostic 3D tracks; scoring stays enabled
+  save_tracks_npz: false            # Optional per-annotation raw/debug tracks (creates many small files)
+  tracks_dir: null                  # null = tracks/ next to output_file
+  externalize_arrays: true          # Store publication arrays in chunked HDF5 sidecars, not JSON base64
+  arrays_sidecar_dir: null          # null = <output_stem>_artifacts/ next to output_file
+  array_shard_target_bytes: 1073741824  # Rotate shards at approximately 1 GiB
+  regenerate: false                 # Backup existing output and re-annotate from scratch

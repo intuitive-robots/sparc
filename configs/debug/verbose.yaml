@@ -1,0 +1,13 @@
+# @package _global_
+# Debug: save every annotation, useful for inspecting pipeline issues
+
+debug:
+  save_debug_images: true
+  debug_image_freq: 1
+  debug_image_dir: null        # null = {dataset_root}/debug_annotations
+  debug_image_format: "png"
+  debug_max_per_traj: 10
+  n_trajectories: null         # null = use all; set to int to subsample (seeded)
+
+logging:
+  level: "DEBUG"

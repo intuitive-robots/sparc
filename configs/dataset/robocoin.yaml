@@ -1,0 +1,19 @@
+# @package _global_
+# RoboCOIN (multi-robot mobile manipulation, LeRobot v3)
+
+dataset:
+  name: "robocoin"
+  type: "robocoin"
+  root: ???  # required: dataset.root=/path/to/dataset
+  fps: 30.0
+  image_width: 640
+  image_height: 480
+  task_obj_dict_path: "${dataset.root}/robocoin_task_obj.pkl"
+
+annotator:
+  gpu_ids: [0]
+  n_processes_per_gpu: 4
+
+debug:
+  n_trajectories: 200
+  debug_image_freq: 1

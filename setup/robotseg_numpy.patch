@@ -1,0 +1,60 @@
+--- a/robotseg/utils/misc.py
++++ b/robotseg/utils/misc.py
+@@ -176,10 +176,21 @@
+     Load the video frames from video_path. The frames are resized to image_size as in
+     the model and are loaded to GPU if offload_video_to_cpu=False. This is used by the demo.
+     """
++    import numpy as np
+     is_bytes = isinstance(video_path, bytes)
+     is_str = isinstance(video_path, str)
++    is_numpy = isinstance(video_path, np.ndarray)
+     is_mp4_path = is_str and os.path.splitext(video_path)[-1] in [".mp4", ".MP4"]
+-    if is_bytes or is_mp4_path:
++    if is_numpy:
++        return load_video_frames_from_numpy(
++            frames=video_path,
++            image_size=image_size,
++            offload_video_to_cpu=offload_video_to_cpu,
++            img_mean=img_mean,
++            img_std=img_std,
++            compute_device=compute_device,
++        )
++    elif is_bytes or is_mp4_path:
+         return load_video_frames_from_video_file(
+             video_path=video_path,
+             image_size=image_size,
+@@ -202,6 +213,34 @@
+         raise NotImplementedError(
+             "Only MP4 video and JPEG folder are supported at this moment"
+         )
++
++
++def load_video_frames_from_numpy(
++    frames,
++    image_size,
++    offload_video_to_cpu,
++    img_mean=(0.485, 0.456, 0.406),
++    img_std=(0.229, 0.224, 0.225),
++    compute_device=torch.device("cuda"),
++):
++    """Load video frames directly from a (T, H, W, 3) uint8 numpy array, no disk I/O."""
++    import torch.nn.functional as F
++    T, video_height, video_width = frames.shape[:3]
++    img_mean_t = torch.tensor(img_mean, dtype=torch.float32)[:, None, None]
++    img_std_t = torch.tensor(img_std, dtype=torch.float32)[:, None, None]
++
++    # (T, H, W, 3) uint8 -> (T, 3, H, W) float32 in [0, 1]
++    images = torch.from_numpy(frames).permute(0, 3, 1, 2).float() / 255.0
++    # resize to image_size x image_size
++    images = F.interpolate(images, size=(image_size, image_size), mode="bilinear", align_corners=False)
++
++    if not offload_video_to_cpu:
++        images = images.to(compute_device)
++        img_mean_t = img_mean_t.to(compute_device)
++        img_std_t = img_std_t.to(compute_device)
++    images -= img_mean_t
++    images /= img_std_t
++    return images, video_height, video_width
+ 
+ 
+ def load_video_frames_from_jpg_images(
