@@ -31,8 +31,8 @@ Create a new annotation environment from the reference runtime's complete
 package lock:
 
 ```bash
-conda create -n robog-release -c conda-forge python=3.12 pip ffmpeg
-conda activate robog-release
+conda create -n sparc -c conda-forge python=3.12 pip ffmpeg
+conda activate sparc
 python -m pip install --no-deps -r requirements.txt
 python annotate.py --help
 ```
@@ -52,13 +52,6 @@ conflicts; on ARM, uv also flags NVIDIA's upstream SBSA wheel tag.
 
 Do not install vLLM in the annotation environment; its Torch requirements differ.
 
-The existing `robog-dataset-pipeline-tf4571` environment remains the development
-and test baseline (Python 3.12.13, Torch 2.10.0+cu130, torchvision 0.25.0+cu130,
-Transformers 4.57.6). The installation lock does not modify that environment. A fresh Linux aarch64
-installation passed the test suite and RobotSeg CPU construction/frame-loading
-checks; full GPU annotation in that fresh environment remains to be validated.
-The reference environment separately passed a 10-trajectory DROID GPU run
-with cached task parsing, producing 15 validated annotations.
 
 Prepare the SAM2 checkpoint:
 
