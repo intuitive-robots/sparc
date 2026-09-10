@@ -14,8 +14,9 @@
 [![SPARC model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Qwen3.5--4B-FFD21E?style=flat-square)](https://huggingface.co/irl-kit/SPARC-Qwen3.5-4B)
 [![SPARC-VQA dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-SPARC--VQA-FFD21E?style=flat-square)](https://huggingface.co/datasets/irl-kit/SPARC-VQA)
 [![IA-Bench benchmark](https://img.shields.io/badge/%F0%9F%A4%97%20Benchmark-IA--Bench-FFD21E?style=flat-square)](https://huggingface.co/datasets/irl-kit/IA-Bench)
+[![Annotation releases](https://img.shields.io/badge/%F0%9F%A4%97%20Annotations-Releases-34AA98?style=flat-square)](#annotations)
 
-[Resources](#resources) | [Quickstart](#quickstart) | [Workflow](#workflow) | [Outputs](#outputs) | [Documentation](#documentation) | [Citation](#citation)
+[Resources](#resources) | [Annotations](#annotations) | [Quickstart](#quickstart) | [Workflow](#workflow) | [Outputs](#outputs) | [Documentation](#documentation) | [Citation](#citation)
 
 </div>
 
@@ -49,6 +50,22 @@ broader paper, including annotation reliability and downstream learning results.
 
 The model and dataset cards include usage examples. To generate annotations
 for your own demonstrations, follow the quickstart below.
+
+<a id="annotations"></a>
+
+## Annotations
+
+SPARC-generated spatial annotations are released per source dataset, with
+bounding boxes, object traces, manipulation phases and reliability scores.
+
+| Source dataset | Annotation release |
+|---|---|
+| DROID | [🤗 sparc-droid-annotations](https://huggingface.co/datasets/irl-kit/sparc-droid-annotations) |
+| BridgeData | Coming soon |
+| AgiBotWorld | Coming soon |
+| Open X-Embodiment | Coming soon |
+
+Find all releases in the [SPARC collection](https://huggingface.co/collections/irl-kit/sparc).
 
 <a id="quickstart"></a>
 <a id="installation"></a>
