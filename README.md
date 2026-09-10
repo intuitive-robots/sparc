@@ -10,7 +10,12 @@
 [![Project website](https://img.shields.io/badge/%F0%9F%8C%90%20Project-Website-2563EB?style=flat-square)](https://intuitive-robots.github.io/sparc-labeling/)
 [![BibTeX citation](https://img.shields.io/badge/%F0%9F%93%9A%20Cite-BibTeX-475569?style=flat-square)](#citation)
 
-[Quickstart](#quickstart) | [Workflow](#workflow) | [Outputs](#outputs) | [Documentation](#documentation) | [Citation](#citation)
+[![Hugging Face collection](https://img.shields.io/badge/%F0%9F%A4%97%20Collection-SPARC-FFD21E?style=flat-square)](https://huggingface.co/collections/irl-kit/sparc)
+[![SPARC model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Qwen3.5--4B-FFD21E?style=flat-square)](https://huggingface.co/irl-kit/SPARC-Qwen3.5-4B)
+[![SPARC-VQA dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-SPARC--VQA-FFD21E?style=flat-square)](https://huggingface.co/datasets/irl-kit/SPARC-VQA)
+[![IA-Bench benchmark](https://img.shields.io/badge/%F0%9F%A4%97%20Benchmark-IA--Bench-FFD21E?style=flat-square)](https://huggingface.co/datasets/irl-kit/IA-Bench)
+
+[Resources](#resources) | [Quickstart](#quickstart) | [Workflow](#workflow) | [Outputs](#outputs) | [Documentation](#documentation) | [Citation](#citation)
 
 </div>
 
@@ -30,6 +35,20 @@ on the project page.
 
 This repository contains the annotation pipeline. The project page covers the
 broader paper, including annotation reliability and downstream learning results.
+
+<a id="resources"></a>
+
+## Models, datasets and benchmark
+
+| Resource | What you'll find |
+|---|---|
+| [SPARC collection](https://huggingface.co/collections/irl-kit/sparc) | Paper, model weights, datasets and benchmark in one place |
+| [SPARC-Qwen3.5-4B](https://huggingface.co/irl-kit/SPARC-Qwen3.5-4B) | Model fine-tuned on SPARC-generated VQA for embodied spatial reasoning |
+| [SPARC-VQA](https://huggingface.co/datasets/irl-kit/SPARC-VQA) | Visual question-answering data generated from SPARC annotations |
+| [IA-Bench](https://huggingface.co/datasets/irl-kit/IA-Bench) | Human-annotated benchmark for grounding interacted objects in robot demonstrations |
+
+The model and dataset cards include usage examples. To generate annotations
+for your own demonstrations, follow the quickstart below.
 
 <a id="quickstart"></a>
 <a id="installation"></a>
